@@ -15,6 +15,6 @@ func setupRouter() *gin.Engine {
 	r := gin.Default()
 	data := controller.DataHandler{}
 	r.GET("/ping", controller.Ping)
-	r.POST("/DataCleansing/:input_string", data.EndPointDataCleansing)
+	r.POST("/DataCleansing/", data.EndPointDataCleansing)
 	return r
 }

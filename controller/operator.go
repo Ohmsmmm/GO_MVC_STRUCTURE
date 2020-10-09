@@ -20,11 +20,11 @@ type DataHandler struct {
 func (h *DataHandler) EndPointDataCleansing(c *gin.Context) {
 
 	var data model.DataCleansingRequest
-	data.InputString = c.Param("input_string")
-	//if err := c.ShouldBindJSON(&data.InputString); err != nil {
-	//	c.Status(http.StatusBadRequest)
-	//	return
-	//}
+	//data.InputString = c.Param("input_string")
+	e := c.BindJSON(&data)
+	if e != nil {
+		fmt.Println(e)
+	}
 
 	result, err := h.cleansing(data)
 	if err != "" {
