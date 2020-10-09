@@ -1,4 +1,4 @@
-package model
+package main
 
 type DataCleansingRequest struct {
 	InputString string `json:"input_string"`

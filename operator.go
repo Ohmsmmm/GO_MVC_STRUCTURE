@@ -1,8 +1,7 @@
-package controller
+package main
 
 import (
 	"fmt"
-	"github.com/GO_MVC_STRUCTURE/model"
 	"net/http"
 	"strings"
 
@@ -18,8 +17,8 @@ type DataHandler struct {
 }
 
 func (h *DataHandler) EndPointDataCleansing(c *gin.Context) {
-
-	var data model.DataCleansingRequest
+	
+	var data DataCleansingRequest
 	//data.InputString = c.Param("input_string")
 	e := c.BindJSON(&data)
 	if e != nil {
@@ -34,7 +33,7 @@ func (h *DataHandler) EndPointDataCleansing(c *gin.Context) {
 	c.JSON(http.StatusOK, result)
 }
 
-func (h *DataHandler) cleansing(data model.DataCleansingRequest) (result []model.DataCleansingResponse, err string) {
+func (h *DataHandler) cleansing(data DataCleansingRequest) (result []DataCleansingResponse, err string) {
 
 	fmt.Println("inputString : ", data.InputString)
 	// 1. รับข้อความอันมีความยาวไม่ตํา่ กว่า 20 ตัวอักษร และไม่มากกวา่ 255 ตัวอักษร (นับช่องวา่ ง)
@@ -64,14 +63,14 @@ func (h *DataHandler) cleansing(data model.DataCleansingRequest) (result []model
 	// 5. แสดงผลในลักษณะของตารางแจกแจงความถี่ของคําแต่ละคําในข้อความออกมา (ต้องการเพียงแคค่ ํา
 	// แต่ละคํามคี วามถี่เป็นเทา่ ใด)
 	// map tabel คล้าย array แบบไม่มีโครงสร้าง
-	MapWordCount := make(map[string]*model.DataCleansingResponse)
+	MapWordCount := make(map[string]*DataCleansingResponse)
 	for _, word := range wordAsArray {
 
 		if valueInMap, ok := MapWordCount[word]; ok {
 			valueInMap.Count++
 		} else {
 
-			MapWordCount[word] = &model.DataCleansingResponse{
+			MapWordCount[word] = &DataCleansingResponse{
 				Word:  word,
 				Count: 1, //conut begin 1
 			}
