@@ -1,0 +1,83 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "findIO",
+    "version": "2",
+    "title": "Find IO in Twitter account"
+  },
+  "host": "localhost:8080",
+  "tags": [
+    {
+      "name": "Find"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/FindIOAccount": {
+      "post": {
+        "tags": [
+          "Find"
+        ],
+        "summary": "ตรวจหาบัญชี IO",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "hashtag1",
+            "in": "formData",
+            "description": "hashtag",
+            "required": true,
+            "type": "string",
+            "default": "PrayutSusu"
+          },
+          {
+            "name": "hashtag2",
+            "in": "formData",
+            "description": "hashtag",
+            "required": true,
+            "type": "string",
+            "default": "PrawitSusu"
+          },
+          {
+            "name": "hashtag3",
+            "in": "formData",
+            "description": "hashtag",
+            "required": true,
+            "type": "string",
+            "default": "SriwalaSuSu"
+          },
+          {
+            "name": "hashtag4",
+            "in": "formData",
+            "description": "hashtag",
+            "required": true,
+            "type": "string",
+            "default": "TaksinGetOut"
+          },
+          {
+            "name": "hashtag5",
+            "in": "formData",
+            "description": "hashtag",
+            "required": true,
+            "type": "string",
+            "default": "ChangChart"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update",
+            "schema": {
+              "example": "success"
+            }
+          }
+        }
+      }
+    }
+  }
+}

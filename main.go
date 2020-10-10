@@ -6,7 +6,7 @@ import (
 
 
 func main() {
-	InitDB()
+	//InitDB()
 	r := setupRouter()
 	r.Run()
 }
@@ -14,7 +14,6 @@ func main() {
 func setupRouter() *gin.Engine {
 	r := gin.Default()
 	data := DataHandler{}
-	r.GET("/ping", Ping)
-	r.POST("/DataCleansing/", data.EndPointDataCleansing)
+	r.POST("/FindIOAccount", data.EndPointIOAccount)
 	return r
 }
